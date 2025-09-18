@@ -354,14 +354,9 @@ function checkSpecialInteractions() {
            }
        } else if (gameState.phase === 'infiltration') {
     // Avançando durante infiltração
-    if (gameState.currentMap < 2) {  // MUDANÇA: limitar até mapa 2
+    if (gameState.currentMap < maps.getCount() - 1) {
         gameState.currentMap++;
         loadMap(gameState.currentMap);
-    } else {
-        // Após mapa 2, voltar ao menu
-        if (window.MadNightMain && window.MadNightMain.backToMenu) {
-            window.MadNightMain.backToMenu();
-        }
     }
 }
    
