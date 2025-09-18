@@ -1,1 +1,0 @@
-Setinhas e besteirinhas
