@@ -201,34 +201,31 @@
         },
         
         selectOption: function() {
-            if (this.currentScreen !== 'main') {
-                if (this.currentScreen === 'rankings' || this.currentScreen === 'credits') {
-                    this.currentScreen = 'main';
-                }
-                return;
-            }
-            
-            switch(this.options[this.currentOption]) {
-                case 'JOGAR':
-                    this.startGame();
-                    break;
-                case 'RANKINGS':
-                    this.showRankings();
-                    break;
-                case 'CRÉDITOS':
-                    this.showCredits();
-                    break;
-                case 'SAIR':
-                    this.quitGame();
-                    break;
-            }
-        },
-        
-        goBack: function() {
-            if (this.currentScreen !== 'main') {
-                this.currentScreen = 'main';
-            }
-        },
+    if (this.currentScreen !== 'main') {
+        if (this.currentScreen === 'rankings' || this.currentScreen === 'credits') {
+            this.currentScreen = 'main';
+        }
+        return;
+    }
+    
+    switch(this.options[this.currentOption]) {
+        case 'JOGAR':
+            this.startGame();
+            break;
+        case 'RANKINGS':
+            // DESABILITADO - não faz nada
+            console.log('Rankings desabilitado na versão demo');
+            break;
+        case 'CRÉDITOS':
+            // DESABILITADO - não faz nada
+            console.log('Créditos desabilitado na versão demo');
+            break;
+        case 'SAIR':
+            // DESABILITADO - não faz nada
+            console.log('Sair desabilitado na versão demo');
+            break;
+    }
+},
         
         startGame: function() {
     console.log('🎮 Iniciando jogo...');
@@ -345,107 +342,54 @@
         },
         
         renderMainMenu: function(ctx) {
-    // Renderizar background animado (1920x1080)
+    // Renderizar background animado
     if (this.backgrounds.main[this.bgFrame]) {
-        // Como o canvas é 1920x1080 (960x540 com zoom 2x), desenhar direto
         ctx.drawImage(this.backgrounds.main[this.bgFrame], 0, 0, 1920, 1080);
     } else {
-        // Fallback se a imagem não carregou
         ctx.fillStyle = '#111';
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }
             
-            // Opções do menu (230 pixels mais à esquerda)
-            const menuX = ctx.canvas.width / 2 - 230; // Ajustado 230px para esquerda
-            
-            ctx.font = '24px "Press Start 2P"';
-            ctx.textAlign = 'left'; // Mudado para left já que ajustamos manualmente
-            
-            this.options.forEach((option, index) => {
-                if (index === this.currentOption) {
-                    // Destacar opção selecionada
-                    ctx.fillStyle = '#ff0';
-                    ctx.fillText('→ ' + option, menuX - 30, 350 + index * 60);
-                } else {
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(option, menuX, 350 + index * 60);
-                }
-            });
-            
-            // Instruções
-            ctx.fillStyle = '#888';
-            ctx.font = '10px "Press Start 2P"';
-            ctx.textAlign = 'center';
-            ctx.fillText('Use ↑↓ para navegar, ENTER para selecionar', ctx.canvas.width / 2, ctx.canvas.height - 40);
-            
-            // Versão (canto inferior direito)
-            ctx.fillStyle = '#666';
-            ctx.font = '8px "Press Start 2P"';
-            ctx.textAlign = 'right';
-            ctx.fillText('v1.64', ctx.canvas.width - 10, ctx.canvas.height - 10);
-        },
-        
-        renderRankings: function(ctx) {
-            // Renderizar background dos scores
-            if (this.backgrounds.scores) {
-    ctx.drawImage(this.backgrounds.scores, 0, 0, 1920, 1080);
-} else {
-                ctx.fillStyle = '#001';
-                ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    const menuX = ctx.canvas.width / 2 - 230;
+    ctx.font = '24px "Press Start 2P"';
+    ctx.textAlign = 'left';
+    
+    this.options.forEach((option, index) => {
+        if (index === this.currentOption) {
+            if (option === 'JOGAR') {
+                // JOGAR ativo
+                ctx.fillStyle = '#ff0';
+                ctx.fillText('→ ' + option, menuX - 30, 350 + index * 60);
+            } else {
+                // Outros botões selecionados mas desabilitados
+                ctx.fillStyle = '#666'; // Cor cinza para indicar desabilitado
+                ctx.fillText('→ ' + option + ' (DEMO)', menuX - 30, 350 + index * 60);
             }
-            
-            ctx.fillStyle = '#ff0';
-            ctx.font = '32px "Press Start 2P"';
-            ctx.textAlign = 'center';
-            ctx.fillText('HALL DA FAMA', ctx.canvas.width / 2, 80);
-            
-            // Obter rankings
-            const speedRuns = MadNight.stats ? MadNight.stats.getRankingDisplay('speedRun') : [];
-            const killRankings = MadNight.stats ? MadNight.stats.getRankingDisplay('enemyKills') : [];
-            
-            // Definir colunas (apenas 2)
-            const columns = [
-                { title: 'TEMPO', x: ctx.canvas.width / 3, data: speedRuns },
-                { title: 'KILLS', x: (ctx.canvas.width / 3) * 2, data: killRankings }
-            ];
-            
-            // Renderizar cada coluna
-            columns.forEach(column => {
-                // Título da coluna
-                ctx.fillStyle = '#0ff';
-                ctx.font = '16px "Press Start 2P"';
-                ctx.fillText(column.title, column.x, 140);
-                
-                // Scores
-                ctx.font = '10px "Press Start 2P"';
-                column.data.forEach((score, index) => {
-                    if (index >= 8) return; // Mostrar apenas top 8
-                    
-                    const y = 180 + index * 35;
-                    
-                    // Posição
-                    ctx.fillStyle = '#ff0';
-                    ctx.textAlign = 'right';
-                    ctx.fillText(`${score.position}.`, column.x - 120, y);
-                    
-                    // Nome
-                    ctx.fillStyle = '#fff';
-                    ctx.textAlign = 'left';
-                    ctx.fillText(score.name, column.x - 100, y);
-                    
-                    // Valor
-                    ctx.fillStyle = '#0f0';
-                    ctx.textAlign = 'left';
-                    ctx.fillText(score.display || score.value, column.x - 100, y + 15);
-                });
-            });
+        } else {
+            if (option === 'JOGAR') {
+                // JOGAR normal
+                ctx.fillStyle = '#fff';
+                ctx.fillText(option, menuX, 350 + index * 60);
+            } else {
+                // Outros botões normais mas desabilitados
+                ctx.fillStyle = '#444'; // Cor mais escura para indicar desabilitado
+                ctx.fillText(option + ' (DEMO)', menuX, 350 + index * 60);
+            }
+        }
+    });
             
             // Instruções
-            ctx.fillStyle = '#888';
-            ctx.font = '10px "Press Start 2P"';
-            ctx.textAlign = 'center';
-            ctx.fillText('Pressione ESC para voltar', ctx.canvas.width / 2, ctx.canvas.height - 40);
-        },
+    ctx.fillStyle = '#888';
+    ctx.font = '10px "Press Start 2P"';
+    ctx.textAlign = 'center';
+    ctx.fillText('Use ↑↓ para navegar, ENTER para selecionar', ctx.canvas.width / 2, ctx.canvas.height - 40);
+    
+    // Versão DEMO
+    ctx.fillStyle = '#ff0';
+    ctx.font = '8px "Press Start 2P"';
+    ctx.textAlign = 'right';
+    ctx.fillText('VERSÃO DEMO v1.64', ctx.canvas.width - 10, ctx.canvas.height - 10);
+}
         
         renderCredits: function(ctx) {
             // Renderizar background dos créditos
