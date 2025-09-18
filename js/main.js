@@ -33,6 +33,7 @@ function init() {
     
     // Inicializar renderer
     MadNight.renderer.init(canvas);
+    appState = 'menu';
     
     // Inicializar sistemas essenciais SEMPRE (independente de ter loader ou não)
     if (MadNight.assets && MadNight.assets.init) {
