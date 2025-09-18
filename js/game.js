@@ -337,9 +337,15 @@ function checkSpecialInteractions() {
        if (!map || !map.exit || !collision) return;
        
        if (collision.checkCollision && collision.checkCollision(player, map.exit)) {
-           handleMapTransition();
-       }
-   }
+    if (map.exit.endDemo) {
+        // Voltar ao menu
+        if (window.MadNightMain && window.MadNightMain.backToMenu) {
+            window.MadNightMain.backToMenu();
+        }
+    } else {
+        handleMapTransition();
+    }
+}
    
    // Transição entre mapas
    function handleMapTransition() {
