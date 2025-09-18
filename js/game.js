@@ -333,19 +333,13 @@ function checkSpecialInteractions() {
    
    // Verificar transição de mapa
    function checkMapTransition() {
-       const map = maps.getMap(gameState.currentMap);
+       cconst map = maps.getMap(gameState.currentMap);
        if (!map || !map.exit || !collision) return;
        
        if (collision.checkCollision && collision.checkCollision(player, map.exit)) {
-    if (map.exit.endDemo) {
-        // Voltar ao menu
-        if (window.MadNightMain && window.MadNightMain.backToMenu) {
-            window.MadNightMain.backToMenu();
-        }
-    } else {
-        handleMapTransition();
-    }
-}
+           handleMapTransition();
+       }
+   }
    
    // Transição entre mapas
    function handleMapTransition() {
