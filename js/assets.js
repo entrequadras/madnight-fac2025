@@ -104,12 +104,7 @@
             setasul: { width: 50, height: 59 },
             setanorte: { width: 50, height: 59 },
             
-            // NOVO: Definições dos inimigos
-            faquinha: { width: 46, height: 46 },
-            morcego: { width: 46, height: 46 },
-            caveirinha: { width: 46, height: 46 },
-            janis: { width: 46, height: 46 },
-            chacal: { width: 60, height: 60 }
+    
         },
         
         // Container para imagens carregadas
@@ -117,22 +112,12 @@
         
         // Container para sprites
         sprites: {
-            madmax: [],
-            faquinha: [],
-            morcego: [],
-            caveirinha: [],
-            janis: [],
-            chacal: []
+            madmax: []
         },
         
         // Contador de sprites carregados
         spritesLoaded: {
-            madmax: 0,
-            faquinha: 0,
-            morcego: 0,
-            caveirinha: 0,
-            janis: 0,
-            chacal: 0
+            madmax: 0
         },
         
         // Carregar uma imagem
@@ -281,11 +266,6 @@
             
             // Carregar sprites de personagens
             this.loadCharacterSprites('madmax');
-            this.loadCharacterSprites('faquinha');
-            this.loadCharacterSprites('morcego');
-            this.loadCharacterSprites('caveirinha');
-            this.loadCharacterSprites('janis');
-            this.loadCharacterSprites('chacal');
         },
         
         // Verificar se um asset está carregado
