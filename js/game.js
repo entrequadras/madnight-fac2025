@@ -353,12 +353,13 @@ function checkSpecialInteractions() {
                handleVictory();
            }
        } else if (gameState.phase === 'infiltration') {
-    // Avançando durante infiltração
-    if (gameState.currentMap < maps.getCount() - 1) {
-        gameState.currentMap++;
-        loadMap(gameState.currentMap);
-    }
-}
+           // Avançando durante infiltração
+           if (gameState.currentMap < maps.getCount() - 1) {
+               gameState.currentMap++;
+               loadMap(gameState.currentMap);
+           }
+       }
+   }
    
    // Sistema de spawn durante fuga
    function updateEscapeSpawns() {
