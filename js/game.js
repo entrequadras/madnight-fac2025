@@ -333,7 +333,7 @@ function checkSpecialInteractions() {
    
    // Verificar transição de mapa
    function checkMapTransition() {
-       cconst map = maps.getMap(gameState.currentMap);
+       const map = maps.getMap(gameState.currentMap);
        if (!map || !map.exit || !collision) return;
        
        if (collision.checkCollision && collision.checkCollision(player, map.exit)) {
