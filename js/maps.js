@@ -77,8 +77,6 @@
             ],
             objects: [
                 {type: 'caixadeluz', x: 1750, y: 560},
-                {type: 'banco03', x: 630, y: 200},
-                {type: 'banco04', x: 680, y: 200},
                 {type: 'garrafaquebrada01', x: 655, y: 240},
                 {type: 'cadeiradepraia01', x: 210, y: 1000},
                 {type: 'garrafaquebrada02', x: 1520, y: 1015}
@@ -171,15 +169,8 @@
             subtitle: "Primeira superquadra",
             width: 1920,
             height: 1610,
-            enemies: [
-                {x: 267, y: 1524, type: 'faquinha'},
-                {x: 444, y: 820, type: 'janis'}
-            ],
-            escapeEnemies: [
-                {x: 400, y: 300, type: 'chacal'},
-                {x: 200, y: 200, type: 'caveirinha'},
-                {x: 600, y: 400, type: 'caveirinha'}
-            ],
+            enemies: [],
+            escapeEnemies: [],
             tiles: null, // Será gerado
             hasBackground: true,
             backgroundAsset: 'entradaKS01', // PNG com transparência sobre os tiles
