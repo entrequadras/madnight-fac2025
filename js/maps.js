@@ -274,7 +274,7 @@
             shadows: [],
             playerStart: {x: 1440, y: 1550},
             playerStartEscape: {x: 70, y: 70},
-            exit: {x: 70, y: 70, w: 60, h: 60},
+            exit: {x: 70, y: 70, w: 60, h: 60, endDemo: true}  // Adicionar flag endDemo
             orelhao: {x: 1000, y: 412, w: 40, h: 60},
             direction: 'left'
         },
