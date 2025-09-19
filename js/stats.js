@@ -242,14 +242,14 @@
         initializeFakeScores: function() {
             this.highScores = {
                 speedRun: [
-                    {name: 'IMP*', value: 542, display: '9:02', date: '2024-12-15', deaths: 0},
-                    {name: 'GAMA', value: 608, display: '10:08', date: '2024-12-14', deaths: 1},
-                    {name: 'TATU', value: 645, display: '10:45', date: '2024-12-13', deaths: 0},
-                    {name: 'KID_', value: 712, display: '11:52', date: '2024-12-12', deaths: 2},
-                    {name: 'KIKO', value: 798, display: '13:18', date: '2024-12-11', deaths: 1},
-                    {name: 'PIPO', value: 834, display: '13:54', date: '2024-12-10', deaths: 3},
-                    {name: 'DUDU', value: 902, display: '15:02', date: '2024-12-09', deaths: 2},
-                    {name: 'SAMY', value: 945, display: '15:45', date: '2024-12-08', deaths: 4}
+                    {name: 'IMP*', value: 542, display: '30:02', date: '2024-12-15', deaths: 0},
+                    {name: 'GAMA', value: 608, display: '32:08', date: '2024-12-14', deaths: 1},
+                    {name: 'TATU', value: 645, display: '34:45', date: '2024-12-13', deaths: 0},
+                    {name: 'KID_', value: 712, display: '34:52', date: '2024-12-12', deaths: 2},
+                    {name: 'KIKO', value: 798, display: '43:18', date: '2024-12-11', deaths: 1},
+                    {name: 'PIPO', value: 834, display: '43:54', date: '2024-12-10', deaths: 3},
+                    {name: 'DUDU', value: 902, display: '55:02', date: '2024-12-09', deaths: 2},
+                    {name: 'SAMY', value: 945, display: '55:45', date: '2024-12-08', deaths: 4}
                 ],
                 enemyKills: [
                     {name: 'MEND', value: 62, display: '62 kills', date: '2024-12-14', time: '12:30'},
